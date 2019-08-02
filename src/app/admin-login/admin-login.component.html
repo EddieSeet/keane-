@@ -1,0 +1,40 @@
+<br>
+<br>
+<br>
+
+<h4>Admin Login</h4>
+<hr >
+<div class="container">
+  <div class="row" *ngIf="!submitted">
+    <div class="col-sm-12 text-left">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit();">
+        <div class="form-group">
+          <label for="userid">UserID:</label>
+          <input [formControlName]="'userid'" type="text" id="userid" class="form-control">          
+            <span class ="help-block" *ngIf="!loginForm.get('userid').valid && loginForm.get('userid').touched">  
+              <span *ngIf="loginForm.get('userid').errors['required']">This field is required.</span>
+              <span *ngIf="loginForm.get('userid').errors['blankSpaces']">Cannot accept blanks</span>
+            </span>
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input [formControlName]="'password'" type="text" id="password" class="form-control"> 
+          <span class ="help-block" *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">         
+            password must contain 1 uppercase and 1 number (at least 8 characters)
+          </span>
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="!loginForm.valid">Login</button>
+      </form>
+      <hr>      
+    </div>
+  </div>  
+</div>
+
+<!-- if this is submitted -->
+<div class="row" *ngIf="submitted">
+  <div class="col-sm-8 col-md-offset-2 text-left">
+    <h3>You have login!</h3>
+
+    <button class="btn btn-success" (click)="onReset()">Login again</button>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<br>
+<br>
+<br>
+
+<h4>Enquiry</h4>
+<hr >
+<div class="container">
+  <div class="row" *ngIf="!submitted">
+    <div class="col-sm-12 text-left">
+      <form [formGroup]="enquiryForm" (ngSubmit)="onSubmit();">
+        <div class="form-group">
+          <label for="useremail">Your Email:</label>
+          <input [formControlName]="'useremail'" type="text" id="useremail" class="form-control">          
+            <span class ="help-block" *ngIf="!enquiryForm.get('useremail').valid && enquiryForm.get('useremail').touched">  
+              <span *ngIf="enquiryForm.get('useremail').errors['required']">This field is required.</span>
+              <span *ngIf="enquiryForm.get('useremail').errors['email']">Invalid email</span>
+            </span>
+        </div>
+        <div class="form-group">
+          <label for="userenquiry">Your Enquiry:</label>
+          <input [formControlName]="'userenquiry'" type="email" id="userenquiry" class="form-control"> 
+          <span class ="help-block" *ngIf="!enquiryForm.get('userenquiry').valid && enquiryForm.get('userenquiry').touched">         
+            <span *ngIf="enquiryForm.get('userenquiry').errors['required']">This field is required.</span>
+            <span *ngIf="enquiryForm.get('userenquiry').errors['blankSpaces']">Cannot accept all blanks</span>
+          </span>
+        </div>
+        <div class="form-group">
+          <label for="usermessage">Your Message:</label>
+          <textarea [formControlName]="'usermessage'" type="text" id="usermessage" rows="5" class="form-control"></textarea> 
+          <span class ="help-block" *ngIf="!enquiryForm.get('usermessage').valid && enquiryForm.get('usermessage').touched">
+            <span *ngIf="enquiryForm.get('usermessage').errors['required']">This field is required.</span>
+            <span *ngIf="enquiryForm.get('usermessage').errors['minlength']">Minimum 5 characters</span>
+          </span>         
+        </div>
+        <button class="btn btn-primary" (click)="onAddEnquiry();" type="submit" [disabled]="!enquiryForm.valid">Submit</button>
+      </form>
+      <hr>      
+    </div>
+  </div>  
+</div>
+
+<!-- if this is submitted -->
+<div class="row" *ngIf="submitted">
+  <div class="col-sm-8 col-md-offset-2 text-left">
+    <h3>Your Data</h3>
+    <p>Email: {{ enquiryForm.value.useremail }}</p>
+    <p>Enquiry: {{ enquiryForm.value.userenquiry }}</p>
+    <p>Message: {{ enquiryForm.value.usermessage }}</p>
+
+    <button class="btn btn-success" (click)="onReset()">Submit another Enquiry</button>
+  </div>
+</div>

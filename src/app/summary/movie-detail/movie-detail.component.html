@@ -1,0 +1,69 @@
+<br>
+<br>
+<br>
+
+<h4>Movie Detail</h4>
+<div class="container">
+  <div class="row" *ngIf="!showEditForm">
+    <div class="col-sm-8 offset-sm-2">
+      <div class="card">
+        <div class="card-body">
+          <img src="{{ selectedMovie.image_url }}" alt="">
+          <br>
+          <h4 class="card-title">{{ selectedMovie.title }}</h4>
+          <h6 class="card-subtitle mb-2">{{ selectedMovie.actors }}</h6>
+          <p>{{ selectedMovie.studio }}</p>
+          <h6 class="card-subtitle mb-2">{{ selectedMovie.genre_name }}</h6>
+          <p>{{ selectedMovie.genre_desc }}</p>
+          <a routerLink="/summary" class="btn btn-success">Back to List</a>
+          &nbsp;
+          <button (click) ="toggleShowEditForm();" class="btn btn-warning">Edit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Form -->
+  <div class="row" *ngIf="showEditForm">
+    <div class="col-sm-12">
+      <h3>Edit Movie Detail</h3>
+      <div class="form-group row">
+        <label for="inputTitle" class="col-sm-3 form-control-label">Title</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="inputTitle" #inputTitle [value]="selectedMovie.title">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="inputActors" class="col-sm-3 form-control-label">Actors</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="inputActors" #inputActors [value]="selectedMovie.actors">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="inputStudio" class="col-sm-3 form-control-label">Studio</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="inputStudio" #inputStudio [value]="selectedMovie.studio">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="inputGenreName" class="col-sm-3 form-control-label">Genre Name</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="inputGenreName" #inputGenreName [value]="selectedMovie.genre_name">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="inputGenreDesc" class="col-sm-3 form-control-label">Genre Description</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="inputGenreDesc" #inputGenreDesc [value]="selectedMovie.genre_desc">
+        </div>
+      </div>
+      <button (click) ="onUpdate(inputTitle.value, inputActors.value, inputStudio.value, inputGenreName.value, inputGenreDesc.value, selectedMovie.image_url)" class="btn btn-success">Update</button>
+      &nbsp;
+      <button (click) ="toggleShowEditForm();" class="btn btn-danger">Cancel</button>
+    </div>
+  </div>
+</div>

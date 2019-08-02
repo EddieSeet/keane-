@@ -1,0 +1,36 @@
+<br>
+<br>
+<br>
+
+<h4>Movies</h4>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <table class="table">
+        Search: <input type="text" [(ngModel)]="searchStr">
+        <select name="movies" (change)='onGenreChange();' [(ngModel)]='genreSelected'>
+          <option value="-1">All</option>
+          <option value="201">Spy</option>
+          <option value="202">Thriller</option>
+          <option value="203">Superhero</option>
+          <option value="204">Action</option>
+        </select>
+        <br>
+        <br>
+        <tbody>
+          <tr *ngFor="let movie of movieList | find:'genre_name':searchStr;" 
+          [appHoverHighlight]="{background:'lightgrey'}">
+            <td>{{ movie.title }}</td>
+            <td>{{ movie.genre_name | uppercase }}</td>
+            <td><img src="{{ movie.image_url }}" 
+                     alt=""
+                     style="max-width: 3em">
+            </td>
+            <td><button (click)="onViewDetail(movie.movie_id)" class="btn btn-primary">View Detail</button></td>
+            <td><button (click)="onDelete(movie.movie_id)" class="btn btn-danger">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
