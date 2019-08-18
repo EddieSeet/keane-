@@ -12,7 +12,11 @@ export class EnquiryService {
 
   constructor(private httpClient: HttpClient) { }
 
+
+
+
   addEnquiry(newEnquiryInfo){
+
     const httpHeaders = new HttpHeaders({
       'Content-Type': 'application/json',
       'Cache-Control': 'no-cache'
@@ -22,12 +26,22 @@ export class EnquiryService {
       headers: httpHeaders
     }
 
-    this.httpClient.post<Enquiry>("http://localhost:3000/api/enquiry",
-    {info: newEnquiryInfo}, options)
+    this.httpClient.post<Enquiry>("http://localhost:3000/api/enquiry", newEnquiryInfo, options)
     .subscribe((respond) => {
       this.enquiryList.push(respond);
       // this.friendUpdated.emit();
     });
 
   }
+
+
+
+
+
+
+
+
+
+
+
 }

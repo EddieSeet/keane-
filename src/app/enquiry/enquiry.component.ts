@@ -17,6 +17,7 @@ export class EnquiryComponent implements OnInit {
   constructor(private enquiryService: EnquiryService) { }
 
   ngOnInit() {
+    //initializing the form group when angular load
     this.enquiryForm = new FormGroup ({
       'useremail': new FormControl(null, [Validators.required, Validators.email]),
       'userenquiry': new FormControl(null, [Validators.required, this.blankSpaces]),
@@ -25,13 +26,15 @@ export class EnquiryComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log("enquiry submission");
-    console.log(this.enquiryForm);
+    console.log("Go to next page for submit");
+//    console.log(this.enquiryForm);
+    console.log(this.enquiryForm.value)
     this.submitted = true;
+    // this.onReset()
   }
 
   onReset() {
-
+    console.log("Reset form")
     this.enquiryForm.reset({
       useremail: '',
       userenquiry: '',
@@ -51,12 +54,17 @@ export class EnquiryComponent implements OnInit {
   }
 
   onAddEnquiry(){
-    console.log("adding enquiry");
+    console.log("Add Enquiry");
 
-    this.enquiryService.addEnquiry( new Enquiry( 
+    this.enquiryService.addEnquiry(new Enquiry(
       this.enquiryForm.value.useremail,
       this.enquiryForm.value.userenquiry,
-      this.enquiryForm.value.usermessage));
-  }
+      this.enquiryForm.value.usermessage))
+  
+    this.onReset()
+    }
+
+
+
 
 }

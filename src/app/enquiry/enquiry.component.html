@@ -32,7 +32,7 @@
             <span *ngIf="enquiryForm.get('usermessage').errors['minlength']">Minimum 5 characters</span>
           </span>         
         </div>
-        <button class="btn btn-primary" (click)="onAddEnquiry();" type="submit" [disabled]="!enquiryForm.valid">Submit</button>
+        <button class="btn btn-primary"  type="submit" [disabled]="!enquiryForm.valid">Submit</button>
       </form>
       <hr>      
     </div>
@@ -47,6 +47,6 @@
     <p>Enquiry: {{ enquiryForm.value.userenquiry }}</p>
     <p>Message: {{ enquiryForm.value.usermessage }}</p>
 
-    <button class="btn btn-success" (click)="onReset()">Submit another Enquiry</button>
+    <button class="btn btn-success" (click)="onAddEnquiry()">Submit another Enquiry</button>
   </div>
 </div>
