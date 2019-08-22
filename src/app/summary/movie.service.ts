@@ -1,8 +1,9 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Movie } from "./movie.model";
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { map, tap } from "rxjs/operators";
+import { HttpClient, HttpHeaders, HttpErrorResponse } from "@angular/common/http";
+import { map, tap, catchError } from "rxjs/operators";
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -81,6 +82,7 @@ export class MovieService {
     return this.httpClient.get<any>("http://localhost:3000/api/movies/"+id )
     .pipe(
       tap(data=>{
+        console.log("returned data from backend")
         console.log(data);
       })
     )
@@ -109,35 +111,21 @@ export class MovieService {
     );
   }
 
-  updateMovie(updateInfo: Movie){
-
-    console.log(updateInfo)
-var    id = updateInfo.movie_id
-
-
-    return this.httpClient.put<any>("http://localhost:3000/api/movies/" + id, updateInfo).subscribe(
-      data=>{console.log(data)}
-    )
-    
-
-    
-    // const movie_id = updateInfo.movie_id;
-    // delete updateInfo['movie_id'];
-
-    // return this.httpClient.put<{success:boolean}>
-    // (`http://localhost:3000/api/movies/${movie_id}`, 
-    // {info: updateInfo})
-    // .pipe(map(
-    //   (result) => {
-    //     return (result.success == true);
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //     return false;
-    //   }
-    // ));
+  updateMovie(updateInfo: Movie, id:any){
+    console.log(id)
+    return this.httpClient.put<any>("http://localhost:3000/api/movies/" + id, updateInfo)
+    .pipe(
+      tap(data=>console.log(data)),
+      catchError(this.handleError)
+      )
 
   }
+
+  private handleError(res: HttpErrorResponse) {
+    console.error(res);
+    return throwError(res.error || 'Server error');
+  }
+
 
   deleteMovie(movie_id: number){
     return this.httpClient.delete<{success:boolean}>

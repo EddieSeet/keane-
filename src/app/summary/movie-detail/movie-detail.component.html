@@ -4,6 +4,7 @@
 
 <h4>Movie Detail</h4>
 <div class="container">
+ 
   <div class="row" *ngIf="!showEditForm">
     <div class="col-sm-8 offset-sm-2">
       <div class="card">
@@ -23,13 +24,19 @@
     </div>
   </div>
 
+
+  
+
   <!-- Form -->
   <div class="row" *ngIf="showEditForm">
     <div class="col-sm-12">
       <h3>Edit Movie Detail</h3>
+
+      
       <div class="form-group row">
         <label for="inputTitle" class="col-sm-3 form-control-label">Title</label>
         <div class="col-sm-9">
+          <!--#inputTitle is https://angular.io/guide/template-syntax -->
           <input type="text" class="form-control" id="inputTitle" #inputTitle [value]="selectedMovie.title">
         </div>
       </div>
@@ -37,6 +44,7 @@
       <div class="form-group row">
         <label for="inputActors" class="col-sm-3 form-control-label">Actors</label>
         <div class="col-sm-9">
+          
           <input type="text" class="form-control" id="inputActors" #inputActors [value]="selectedMovie.actors">
         </div>
       </div>
@@ -61,9 +69,14 @@
           <input type="text" class="form-control" id="inputGenreDesc" #inputGenreDesc [value]="selectedMovie.genre_desc">
         </div>
       </div>
+      
+      <!-- parse in the input values of #___-->
       <button (click) ="onUpdate(inputTitle.value, inputActors.value, inputStudio.value, inputGenreName.value, inputGenreDesc.value, selectedMovie.image_url)" class="btn btn-success">Update</button>
       &nbsp;
+      
       <button (click) ="toggleShowEditForm();" class="btn btn-danger">Cancel</button>
     </div>
   </div>
+<!--end of form-->
+
 </div>
