@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Genre } from "./genre.model";
+import { Genre } from "../model/genre.model";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { map } from "rxjs/operators";
 

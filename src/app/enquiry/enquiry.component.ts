@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { EnquiryService } from "./enquiry.service";
-import { Enquiry } from './enquiry.model';
+import { EnquiryService } from "../services/enquiry.service";
+import { Enquiry } from '../model/enquiry.model';
 
 @Component({
   selector: 'app-enquiry',

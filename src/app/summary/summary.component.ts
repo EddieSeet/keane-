@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Movie } from "./movie.model";
-import { Genre } from "./genre.model";
-import { MovieService } from "./movie.service";
-import { GenreService } from "./genre.service";
+import { Movie } from "../model/movie.model";
+import { Genre } from "../model/genre.model";
+import { MovieService } from "../services/movie.service";
+import { GenreService } from "../services/genre.service";
 import { Router } from "@angular/router";
 import * as _ from 'lodash';
 import { isBoolean } from 'util';

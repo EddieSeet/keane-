@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Enquiry } from "./enquiry.model";
+import {Enquiry} from "../model/enquiry.model"
+//import { Enquiry } from "./enquiry.model";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 

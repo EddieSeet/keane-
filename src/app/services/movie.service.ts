@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Movie } from "./movie.model";
+import { Movie } from "../model/movie.model";
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from "@angular/common/http";
 import { map, tap, catchError } from "rxjs/operators";
