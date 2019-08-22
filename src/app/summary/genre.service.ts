@@ -10,21 +10,21 @@ export class GenreService {
 
   genreAdded = new EventEmitter <void> ();
 
-  private genreList : Genre [] = [
-    // new Genre(201, "Spy", "James is a superficial character that is a spy."),
-    // new Genre(202, "Thriller", "Ethan Hunt always saves the world when they are in trouble."),
-    // new Genre(203, "Superhero", "Avengers are a bunch of superheroes."),
-    // new Genre(204, "Action", "These drivers know how to race fast and furious.")
-  ];
+  // private genreList : Genre [] = [
+  //   // new Genre(201, "Spy", "James is a superficial character that is a spy."),
+  //   // new Genre(202, "Thriller", "Ethan Hunt always saves the world when they are in trouble."),
+  //   // new Genre(203, "Superhero", "Avengers are a bunch of superheroes."),
+  //   // new Genre(204, "Action", "These drivers know how to race fast and furious.")
+  // ];
 
   constructor(public httpClient: HttpClient) { }
 
   loadGenres() {
-    return this.httpClient.get<Genre[]>("/api/genres")
+    return this.httpClient.get<Genre[]>("http://localhost:3000/api/genres")
       .pipe(
         map(
           (genres) => {
-            this.genreList = genres;
+            // this.genreList = genres;
             return genres;
           },
           (error) => {
@@ -48,7 +48,7 @@ export class GenreService {
     this.httpClient.post<Genre>("/api/genres", 
     {info: newGenreInfo}, options)
       .subscribe((respone) => {
-          this.genreList.push(respone);
+          // this.genreList.push(respone);
           this.genreAdded.emit();
         }
       );
@@ -59,16 +59,16 @@ export class GenreService {
   //   this.genreList.push(newGenreInfo);
   // }
 
-  getGenres() {
-    return this.genreList.slice();
-  }
+  // getGenres() {
+  //   return this.genreList.slice();
+  // }
 
-  getGenre(genre_id: number) {
-    for(let genre of this.genreList) {
-      if (genre.genre_id == genre_id) {
-        return genre;
-      }
-    }
-    return undefined;
-  }
-}
+//   getGenre(genre_id: number) {
+//     for(let genre of this.genreList) {
+//       if (genre.genre_id == genre_id) {
+//         return genre;
+//       }
+//     }
+//     return undefined;
+//   }
+ }

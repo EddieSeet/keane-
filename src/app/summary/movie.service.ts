@@ -29,7 +29,7 @@ export class MovieService {
       .pipe(
         map(
           (movies) => {
-            console.log(movies);
+           // console.log(movies);
             this.movieList = movies;
             return movies;
           },
