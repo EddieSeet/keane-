@@ -7,13 +7,16 @@ import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { SummaryComponent } from './summary/summary.component';
-import { EnquiryComponent } from './enquiry/enquiry.component';
+
+import {EnquiryComponent} from "./enquiry/enquiry/enquiry.component"
 import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { MovieDetailComponent } from './summary/movie-detail/movie-detail.component';
 import { HoverHighlightDirective } from './hover-highlight.directive';
 import { FindPipe } from './find.pipe';
+import { ListComponent } from './enquiry/list/list.component';
+import { EnquirycontainerComponent } from './enquiry/enquirycontainer/enquirycontainer.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,9 @@ import { FindPipe } from './find.pipe';
     AdminLoginComponent,
     MovieDetailComponent,
     HoverHighlightDirective,
-    FindPipe
+    FindPipe,
+    ListComponent,
+    EnquirycontainerComponent
   ],
   imports: [
     BrowserModule,

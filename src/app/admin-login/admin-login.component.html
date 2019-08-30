@@ -7,34 +7,47 @@
 <div class="container">
   <div class="row" *ngIf="!submitted">
     <div class="col-sm-12 text-left">
+
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit();">
+        <!--id-->
         <div class="form-group">
-          <label for="userid">UserID:</label>
-          <input [formControlName]="'userid'" type="text" id="userid" class="form-control">          
-            <span class ="help-block" *ngIf="!loginForm.get('userid').valid && loginForm.get('userid').touched">  
-              <span *ngIf="loginForm.get('userid').errors['required']">This field is required.</span>
-              <span *ngIf="loginForm.get('userid').errors['blankSpaces']">Cannot accept blanks</span>
-            </span>
+          <label for="email">Email:</label>
+          <input [formControlName]="'email'" type="text" id="email" class="form-control">          
+
+          <span class ="help-block" *ngIf="emailError== true">Error</span>
+
+          <!-- 
+          <span class ="help-block" *ngIf="!loginForm.get('email').valid && loginForm.get('email').touched">  
+              <span class ="help-block" *ngIf="emailError == true">Error</span>
+              <span *ngIf="loginForm.get('email').errors['blankSpaces']">Cannot accept blanks</span> 
+            </span> -->
         </div>
+        <!--password-->
         <div class="form-group">
           <label for="password">Password:</label>
           <input [formControlName]="'password'" type="text" id="password" class="form-control"> 
-          <span class ="help-block" *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">         
+          <span class ="help-block" *ngIf="passwordError == true">Error</span>
+
+          <!-- <span class ="help-block" *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">         
             password must contain 1 uppercase and 1 number (at least 8 characters)
-          </span>
+          </span> -->
         </div>
+
         <button class="btn btn-primary" type="submit" [disabled]="!loginForm.valid">Login</button>
+          <button routerLink="/enquiry">Register (not implemented yet)
+          </button>
       </form>
       <hr>      
     </div>
+
   </div>  
 </div>
 
 <!-- if this is submitted -->
-<div class="row" *ngIf="submitted">
+<!-- <div class="row" *ngIf="submitted">
   <div class="col-sm-8 col-md-offset-2 text-left">
     <h3>You have login!</h3>
 
     <button class="btn btn-success" (click)="onReset()">Login again</button>
   </div>
-</div>
+</div> -->

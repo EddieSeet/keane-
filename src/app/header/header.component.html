@@ -11,9 +11,18 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/enquiry">Enquiry</a>
       </li>
+      
+      <li class="nav-item" *ngIf="AdminService.loggedIn">
+        <a class="nav-link" routerLink="/enquiry/list">My Enquiry</a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/adminLogin">Login</a>
       </li>
+      
+      <li class="nav-item" *ngIf="AdminService.loggedIn">
+        <a class="nav-link" (click)="logout()">logout</a>
+      </li>
+ 
     </ul>    
   </div>
 </nav>
