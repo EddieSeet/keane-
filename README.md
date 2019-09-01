@@ -34,3 +34,7 @@ Successful login will return a JWT token which will be stored in "local storage"
 ## To be implemented in the future:
 
 Angular route guard (using token)
+
+## Server side code:
+
+Refer to https://github.com/EddieSeet/keane2
